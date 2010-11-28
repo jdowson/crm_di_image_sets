@@ -3,6 +3,8 @@ crm_di_image_sets
 
 ** THIS IS UNDER DEVELOPMENT AND WILL NOT PRODUCE ANY USEFUL BEHAVIOUR IN AN UNMODIFIED FAT FREE CRM SYSTEM ** 
 
+** NOTE: THE CURRENT VERSION REQUIRES VERSION 0.1.2 OR LATER OF THE crm_di_core MODULE **
+
 Overview
 --------
 
@@ -12,7 +14,7 @@ This module implements image set management functionality for [Fat Free CRM][2].
 Prerequisites
 -------------
 
-This module depends on the [crm_di_core][4] plugin to implement standard drop-down list functionality.
+This module depends on the [crm_di_core][4] plugin **version 0.1.2 or later** to implement standard drop-down list functionality.
 
 
 Installation
