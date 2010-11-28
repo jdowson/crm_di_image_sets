@@ -1,0 +1,29 @@
+!!!
+%html
+
+  %head
+
+    %title Gallery
+
+    :javascript
+      var svCoreURL = '/plugin_assets/crm_di_image_sets/svcore/';
+
+    %script{ :type => "text/javascript", :src => "/plugin_assets/crm_di_image_sets/svcore/js/simpleviewer.js" }
+
+    :javascript
+
+      var flashvars = {};
+      flashvars.galleryURL = "#{gallery_xml_image_set_path(@image_set_id)}";
+
+      var params = {};
+      params.wmode = "transparent";
+
+      var attributes = {};
+      attributes.id = "svInstance";
+
+      jQuery(document).ready(function () {
+        SV.simpleviewer.load("sv-container", "100%", "100%", "transparent", true, flashvars, params, attributes);
+      });
+
+  %body
+    #sv-container{ :style => "height:100%; width:100%; border: 1px solid darkgray;" }

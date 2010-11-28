@@ -1,0 +1,9 @@
+page.call "crm.flick", :empty, :toggle
+page.call "crm.flip_form", :create_image_set
+
+if params[:cancel] != "true"
+  page[:create_image_set].replace_html :partial => "create"
+  page.call "crm.set_title", :create_image_set, t(:create_image_set, :scope => [:di, :image_sets])
+else
+  page.call "crm.set_title", :create_image_set, t(:image_sets, :scope => [:di, :image_sets])
+end

@@ -1,0 +1,1 @@
+page << "Modalbox.show('#{preview_frame_image_set_path(@image_set_id)}', {title: '#{@title}', width: 560 });"

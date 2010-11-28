@@ -1,19 +1,18 @@
-crm_di_contacts
-===============
+crm_di_image_sets
+================
+
+** THIS IS UNDER DEVELOPMENT AND WILL NOT PRODUCE ANY USEFUL BEHAVIOUR IN AN UNMODIFIED FAT FREE CRM SYSTEM ** 
 
 Overview
 --------
 
-For the moment this plugin simply acts as a test harness for the [crm_di_core][4] plugin for [Fat Free CRM][2], adding a contact type and subtype to the *contact* model, using the *lookup* functionality in the core module.
-
-This demonstrates the use of the *lookup* admin functionality to maintain cascading dropdown list values, integration of the lookup cache to reduce round trips to the database and the ease with which interacting controls can be added to forms using Fat Free view hooks.
-
-The final target version will add further functionality to allow more flexible contact (and account) associations:
+This module implements image set management functionality for [Fat Free CRM][2].
 
 
-* Multiple associations between contacts, accounts and other models. For example, allowing several contacts, potentially associated with different accounts to be linked to an opportunity with specific roles such as 'influencer', 'decision maker', 'implementation partner'. 
-* Allowing these links to extend the list of related opportunities/leads etc. displayed for each contact/account.
-* Allowing these relationships to be n-tier, for example allowing 'head office', 'regional office', 'branch' relationships to be maintained for accounts, with the ability to roll-up data such as opportunities for higher tiers while storing the opportunity at the lowest tier.
+Prerequisites
+-------------
+
+This module depends on the [crm_di_core][4] plugin to implement standard drop-down list functionality.
 
 
 Installation
@@ -26,17 +25,17 @@ From the root of your Fat Free CRM installation run:
 Where [source] can be, according to your needs, one of:
 
 > SSH:
->    `git@github.com:jdowson/crm_di_contacts.git`
+>    `git@github.com:jdowson/crm_di_image_sets.git`
 >
 > Git: 
->    `git://github.com/jdowson/crm_di_contacts.git`
+>    `git://github.com/jdowson/crm_di_image_sets.git`
 >
 > HTTP:
->    `https://jdowson@github.com/jdowson/crm_di_contacts.git`
+>    `https://jdowson@github.com/jdowson/crm_di_image_sets.git`
 
 The database migrations required for the plug can be installed with the following command:
 
-> `rake db:migrate:plugin NAME=crm_di_contacts`
+> `rake db:migrate:plugin NAME=crm_di_image_sets`
 
 ...that can be run from the Fat Free CRM installation root.
 
@@ -44,13 +43,13 @@ The database migrations required for the plug can be installed with the followin
 Sample Data
 -----------
 
-Sample *contact type* and *contact subtype* lookup fields may be created using the following *rake* command:
+Sample *image_set type* and *image_set subtype* lookup fields may be created using the following *rake* command:
 
-> `rake crm:di:contacts:setup`
+> `rake crm:di:image_sets:setup`
 
 These fields initially contain no lookup values. Sample values can be installed with the following *rake* command:
 
-> `rake crm:di:contacts:demo`
+> `rake crm:di:image_sets:demo`
 
 These commands respond to the usual rake environment options, such as `RAILS_ENV=test`.
 

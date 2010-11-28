@@ -1,0 +1,18 @@
+id = dom_id(@image_set)
+
+if @image_set.errors.empty?
+
+  if !called_from_index_page?
+   # page[:recently].replace :partial => "common/recently"
+  end
+
+  page[id].replace :partial => "image_set", :collection => [ @image_set ]
+  page[id].visual_effect :highlight, :duration => 1.0
+
+else # Errors
+
+  page[id].visual_effect :shake, :duration => 0.25, :distance => 6
+  page[:image_set_name].focus
+  page[:image_set_submit].enable
+
+end

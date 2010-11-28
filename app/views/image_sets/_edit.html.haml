@@ -1,0 +1,11 @@
+.remote
+  - remote_form_for(@image_set, :html => one_submit_only(:image_set)) do |f|
+    = link_to_close edit_image_set_path(@image_set)
+    = hidden_field_tag "image_set[asset_id]", "#{@asset.id if @asset}"
+    = hidden_field_tag "image_set[asset_type]", "#{@asset.class if @asset}"
+    = render :partial => "image_sets/top_section", :locals => { :f => f }
+    = render :partial => "dicommon/audit_information", :object => @image_set
+    .buttonbar
+      = f.submit t :save_button, :scope => [:di, :image_sets]
+      == #{t :or}
+      = link_to_cancel edit_image_set_path(@image_set)

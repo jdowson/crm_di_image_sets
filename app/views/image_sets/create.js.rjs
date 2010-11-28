@@ -1,0 +1,22 @@
+if @image_set.valid?
+  page[:create_image_set_arrow].replace_html "&#9658;"
+  page.visual_effect :toggle_blind, :create_image_set, :duration => 0.3, :afterFinish => 'function(effect) {effect.element.update("")}'
+
+  if called_from_index_page?  # top level image_sets page
+    page[:title].replace_html t(:image_sets, :scope => [:di, :image_sets])
+    page.insert_html :top, :image_set_list, :partial => @view, :collection => [ @image_set ]
+    page[dom_id(@image_set)].visual_effect :highlight, :duration => 1.5
+    page << refresh_sidebar(:index, :filters)
+    page.call "crm.flick", :empty, :remove
+  else # embedded in one of the core asset pages
+    page[:create_image_set_title].replace_html(t :image_sets, :scope => [:di, :image_sets])
+    page.insert_html :top, :image_sets, :partial => "image_sets/image_set", :collection => [ @image_set ]
+    page[dom_id(@image_set)].visual_effect :highlight, :duration => 1.5
+    page[:recently].replace :partial => "common/recently"
+  end
+
+else # failure in validation
+  page[:create_image_set].visual_effect :shake, :duration => 0.25, :distance => 6
+  page[:image_set_name].focus
+  page[:image_set_submit].enable
+end

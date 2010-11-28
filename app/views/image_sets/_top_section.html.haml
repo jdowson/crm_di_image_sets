@@ -1,0 +1,29 @@
+.section
+  %table(width="500" cellpadding="0" cellspacing="0")
+    %tr
+      %td(valign="top" colspan="5")
+        .label.top.req #{t :name, :scope => [:di, :image_sets]}:
+        = f.text_field :name, :style => "width:500px"
+    %tr
+      %td(valign="top" colspan="5")
+        .label.req #{t :flickr_tags, :scope => [:di, :image_sets]} (<small>#{t :flickr_tags_help, :scope => [:di, :image_sets]}</small>):
+        = f.text_field :flickr_tags, :style => "width:500px"
+    %tr
+      %td(valign="top")
+        .label #{t :flickr_account, :scope => [:di, :image_sets]}:
+        = f.lookup_select :flickr_account_id, { :lookup_name => "imageset.account", :include_blank_if_empty => "#{t :no_accounts, :scope => [:di, :image_sets]}" }, { }, { :style => "width:160px" }
+      %td= spacer
+      %td(valign="top")
+        .label #{t :type, :scope => [:di, :image_sets]}:
+        = f.lookup_select :image_set_type_id, { :lookup_name => "#{@asset.class.to_s.downcase}.imageset.type", :include_blank_if_empty => "#{t :no_types, :scope => [:di, :image_sets]}" }, { }, { :style => "width:160px" }
+      %td= spacer
+      %td(valign="top")
+        .label #{t :creator, :scope => [:di, :image_sets]}:
+        %b
+          = @image_set.creator.full_name unless @image_set.creator.nil?
+          = @current_user.full_name if @image_set.creator.nil?
+    %tr
+      %td(valign="top" colspan="5")
+        .label #{t :description, :scope => [:di, :image_sets]}:
+        = f.text_area :description, :style => "width:500px", :rows => "2"
+    = hook(:image_set_top_section_bottom, self, :f => f)

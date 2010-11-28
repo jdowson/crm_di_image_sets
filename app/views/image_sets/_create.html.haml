@@ -1,0 +1,10 @@
+- remote_form_for(@image_set, :html => one_submit_only(:image_set)) do |f|
+  = link_to_close new_image_set_path
+  = hidden_field_tag "image_set[created_by]", @current_user.id
+  = hidden_field_tag "image_set[asset_id]", "#{@asset.id if @asset}"
+  = hidden_field_tag "image_set[asset_type]", "#{@asset.class if @asset}"
+  = render :partial => "top_section", :locals => { :f => f }
+  .buttonbar
+    = f.submit t :create_image_set, :scope => [:di, :image_sets]
+    #{t :or}
+    = link_to_cancel new_image_set_path

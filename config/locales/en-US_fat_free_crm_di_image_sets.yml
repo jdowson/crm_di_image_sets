@@ -1,0 +1,26 @@
+en-US:
+
+  di:
+
+    image_sets:
+      #----------------------------------------------------------------------------
+      # Plugin wide strings.
+      #----------------------------------------------------------------------------
+      image_sets:         Image Sets
+      create_image_set:   Create Image Set
+      preview:            Preview...
+      preview_title:      Image Set Preview
+      icon_alt_preview:   Preview
+      icon_alt_edit:      Edit
+      
+      # Form Fields
+      save_button:        Save Image Set
+      name:               Name
+      type:               Type
+      description:        Description
+      flickr_tags:        Flickr Tags
+      flickr_tags_help:   comma seperated list of tags
+      creator:            Creator
+      flickr_account:     Flickr Account
+      no_types:           [No Types Created]
+      no_accounts:        [No Flickr Accounts Created]

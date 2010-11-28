@@ -1,0 +1,4 @@
+page[dom_id(@image_set)].visual_effect :blind_up, :duration => 0.25
+if called_from_index_page?
+  page << refresh_sidebar(:index, :filters)
+end  

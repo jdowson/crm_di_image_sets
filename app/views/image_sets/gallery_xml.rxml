@@ -1,0 +1,2 @@
+xml.instruct!
+xml.simpleviewergallery("", :useFlickr => "true", :flickrUserName => "#{lkup_code(@image_set.flickr_account_id)}", :flickrTags => "#{@image_set.flickr_tags}", :galleryStyle => "COMPACT", :thumbPosition => "BOTTOM", :backgroundColor => "transparent", :title => "Gallery", :showFullscreenButton => "false", :thumbRows => "1", :thumbColumns => "6", :frameWidth => "10")

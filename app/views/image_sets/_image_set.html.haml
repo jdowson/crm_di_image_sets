@@ -1,0 +1,22 @@
+%li[image_set]{ highlightable(dom_id(image_set, :tools)) }
+
+  - color = lkup_color(image_set.image_set_type_id).nil? ? "" : "background-color:" + lkup_color(image_set.image_set_type_id)
+  .strip.white{ :style => "#{color}" }= lkup_d(image_set.image_set_type_id)
+
+  .tools{ invisible, :id => dom_id(image_set, :tools) }
+    = link_to_image_set_preview(image_set) + " | "
+    = link_to_image_set_edit(image_set) + " | "
+    = link_to_image_set_delete(image_set)
+  .indent
+    %label{ :id => dom_id(image_set, :name) }
+      = link_to_image_set_preview_icon(image_set)
+      = link_to_image_set_edit_icon(image_set)
+      = t(:task_from, link_to(h(image_set.creator.full_name), user_path(image_set.creator))) << ':'
+      = auto_link h(image_set.name)
+      - if image_set.asset_id?
+        == #{t :related} #{link_to(h(image_set.asset.name), polymorphic_url(image_set.asset))}
+      &ndash;&nbsp;
+    %tt
+      = "#{t :created_at_small, :scope=> [:di]}: <b>#{l(image_set.created_at, :format => :short)}</b>"
+    %dt{ :style => "padding: 2px 0px 0px 0px" }
+      = "#{h(image_set.description)}"

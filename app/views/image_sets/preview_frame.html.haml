@@ -1,0 +1,11 @@
+!!!
+%html
+
+  %head
+    %title Gallery Frame
+
+  %body
+    %iframe{ :src => "#{preview_gallery_image_set_path(@image_set_id)}", :width => "540", :height => "540", :frameborder => "0", :scrolling => "no" }
+    %br
+    .MB_alert
+      = render :partial => "messagebox/button_bar", :locals => { :buttons => @buttons }
